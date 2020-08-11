@@ -32,10 +32,14 @@
         >
           Essential Links
         </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
+        <div v-for="link in linksData"
           :key="link.title"
           v-bind="link"
+          >
+          <div :to="link.to">da</div>
+          </div>
+        <EssentialLink
+
         />
       </q-list>
     </q-drawer>
@@ -47,61 +51,51 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+// import EssentialLink from 'components/EssentialLink.vue'
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
+  // components: { EssentialLink },
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      linksData: [
+        {
+          title: 'Öl',
+          caption: 'APK för öl',
+          icon: 'local_drink',
+          to: '/beer'
+        },
+        {
+          title: 'Rött vin',
+          caption: 'APK Rött vin',
+          icon: 'wine',
+          to: '/redwine'
+        },
+        {
+          title: 'Vitt vin',
+          caption: 'APK Vitt vin',
+          icon: 'bottle',
+          to: '/whitewine'
+        },
+        {
+          title: 'Liquor',
+          caption: 'APK för sprit',
+          icon: 'liquor',
+          to: '/liquor'
+        },
+        {
+          title: 'Whisky',
+          caption: 'APK för Whisky',
+          icon: 'Whisky',
+          to: '/thisky'
+        }
+      ]
+      // essentialLinks: linksData
     }
+  },
+  mounted () {
+    this.leftDrawerOpen = false
   }
 }
 </script>
